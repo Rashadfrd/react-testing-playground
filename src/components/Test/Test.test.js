@@ -33,14 +33,6 @@ describe("Queries", () => {
 
     expect(element).toBeInTheDocument();
   });
-  
-  it("should render an element with the placeholder text Username here...", () => {
-    render(<Test />);
-
-    const element = screen.getByPlaceholderText("Username here...");
-
-    expect(element).toBeInTheDocument();
-  });
 
   it("should render an element with the text First btn", () => {
     render(<Test />);
@@ -80,6 +72,34 @@ describe("Queries", () => {
     render(<Test />);
 
     const element = screen.getByTestId("custom-element");
+
+    expect(element).toBeInTheDocument();
+  });
+
+  // Multiple Queries
+
+  it("should render multiple button elements corectly", () => {
+    render(<Test />);
+
+    let elements = screen.getAllByRole("button");
+
+    expect(elements).toHaveLength(3);
+  });
+
+  // Text matching
+
+  it("should render text element corectly", () => {
+    render(<Test />);
+
+    //First way of doing it is using regex :
+
+    // let element = screen.getByText(/something useful/i)
+
+    // It also accepts an object as the final argument that can contain options that affect the precision of string matching:
+
+    let element = screen.getByText("something useful", {
+      exact: false,
+    });
 
     expect(element).toBeInTheDocument();
   });

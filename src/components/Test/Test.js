@@ -11,9 +11,9 @@ function Test() {
 
       <img alt="img" src="/incredibles-2.png" />
 
-      <button title='delete'></button>
+      <button title='delete'>Third btn</button>
 
-      <div data-testid="custom-element" />
+      <div data-testid="custom-element">Something useful</div>
     </>
   )
 }

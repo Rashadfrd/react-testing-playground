@@ -1,5 +1,11 @@
+import React from 'react'
+
 function App() {
-  return <div>Modern Frontend Testing</div>;
+  return (
+    <>
+      <div>Modern Frontend Testing</div>
+    </>
+  )
 }
 
-export default App;
+export default App

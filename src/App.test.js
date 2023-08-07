@@ -1,11 +1,12 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen } from "@testing-library/react";
+import App from "./App";
 
-test('should render App component without crashing', () => {
-  render(<App />)
+// First test
 
-  const element = screen.getByText(/modern frontend testing/i)
+test("should render App component without crashing", () => {
+  render(<App />);
+
+  const element = screen.getByText(/modern frontend testing/i);
 
   expect(element).toBeInTheDocument();
-})
-
+});

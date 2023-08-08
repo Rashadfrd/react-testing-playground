@@ -1,6 +1,13 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-function Test() {
+function Test({exampleText}) {
+  const[name, setName] = useState('Memmedaga')
+
+  useEffect(()=>{
+    setTimeout(() => {
+      setName('Agakerim')
+    },300);
+  },[])
   return (
     <>
       <button>First btn</button>
@@ -14,6 +21,10 @@ function Test() {
       <button title='delete'>Third btn</button>
 
       <div data-testid="custom-element">Something useful</div>
+
+      <span>{exampleText ? exampleText : 'Nothing is here'}</span>
+
+      <span>{name}</span>
     </>
   )
 }

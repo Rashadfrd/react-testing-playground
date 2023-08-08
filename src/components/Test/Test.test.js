@@ -1,9 +1,11 @@
-import { render, screen } from "@testing-library/react";
+import { getByText, render, screen } from "@testing-library/react";
 import Test from "./Test";
 
 // Learning about queries
 
 describe("Queries", () => {
+  // Getby
+
   it("should render a button with the label Second btn", () => {
     render(<Test />);
 
@@ -66,7 +68,7 @@ describe("Queries", () => {
     expect(element).toBeInTheDocument();
   });
 
-  //   This is only recommended for cases where you cant match by role or text or it doesnt make sense (e.g. the text is dynamic).
+  // This is only recommended for cases where you cant match by role or text or it doesnt make sense (e.g. the text is dynamic).
 
   it("should render an element with the testId of custom-element", () => {
     render(<Test />);
@@ -78,7 +80,7 @@ describe("Queries", () => {
 
   // Multiple Queries
 
-  it("should render multiple button elements corectly", () => {
+  it("should render multiple button elements correctly", () => {
     render(<Test />);
 
     let elements = screen.getAllByRole("button");
@@ -88,7 +90,7 @@ describe("Queries", () => {
 
   // Text matching
 
-  it("should render text element corectly", () => {
+  it("should render text element correctly", () => {
     render(<Test />);
 
     //First way of doing it is using regex :
@@ -102,5 +104,35 @@ describe("Queries", () => {
     });
 
     expect(element).toBeInTheDocument();
+  });
+
+  // Queryby
+
+  it("should check the exampleText prop", () => {
+    render(<Test exampleText="something" />);
+
+    const element = screen.getByText("something");
+
+    expect(element).toBeInTheDocument();
+
+    const emptyElement = screen.queryByText(/nothing is here/i);
+
+    expect(emptyElement).not.toBeInTheDocument();
+  });
+
+  // Find by
+
+  it("should ", async () => {
+    render(<Test />);
+
+    const element = await screen.findByText(/memmedaga/i);
+
+    expect(element).toBeInTheDocument();
+
+    // 'FindBy' queries in React Testing Library are designed to work with asynchronous actions, such as waiting for an element to appear in the DOM due to state changes, effects, or other asynchronous processes. In this scenario, where we are updating the state with a delay using useEffect, findBy queries can indeed handle both values: 'Agakerim' and 'Memmedaga'.
+
+    const elementChanged = await screen.findByText(/agakerim/i);
+
+    expect(elementChanged).toBeInTheDocument();
   });
 });

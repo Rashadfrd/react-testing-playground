@@ -1,4 +1,4 @@
-import { getByText, render, screen } from "@testing-library/react";
+import { waitFor, render, screen } from "@testing-library/react";
 import Test from "./Test";
 
 // Learning about queries
@@ -122,7 +122,7 @@ describe("Queries", () => {
 
   // Find by
 
-  it("should ", async () => {
+  it("should find the updated name using findBy", async () => {
     render(<Test />);
 
     const element = await screen.findByText(/memmedaga/i);
@@ -134,5 +134,32 @@ describe("Queries", () => {
     const elementChanged = await screen.findByText(/agakerim/i);
 
     expect(elementChanged).toBeInTheDocument();
+  });
+
+  // Wait for
+
+  it("should find the updated name using waitfor", async () => {
+    render(<Test />);
+
+    // First without using waitfor
+
+    // const elementExists = await screen.findByText(/agakerim/i)
+
+    // expect(elementExists).toBeInTheDocument()
+
+    // const elementDoesNotExist = screen.queryByText(/memmedaga/i)
+
+    // expect(elementDoesNotExist).not.toBeInTheDocument()
+
+
+    // Now using waitfor
+
+    await waitFor(() => {
+      expect(screen.getByText(/agakerim/i)).toBeInTheDocument()
+    })
+
+    await waitFor(() => {
+      expect(screen.queryByText(/memmedaga/i)).not.toBeInTheDocument()
+    })
   });
 });

@@ -1,5 +1,5 @@
 import { waitFor, render, screen } from "@testing-library/react";
-import Test from "./Test";
+import Queries from "./Queries";
 
 // Learning about queries
 
@@ -7,7 +7,7 @@ describe("Queries", () => {
   // Getby
 
   it("should render a button with the label Second btn", () => {
-    render(<Test />);
+    render(<Queries />);
 
     // const firstElement = screen.getByRole('button')
 
@@ -21,7 +21,7 @@ describe("Queries", () => {
   });
 
   it("should render an element with the label Username", () => {
-    render(<Test />);
+    render(<Queries />);
 
     const element = screen.getByLabelText("Username");
 
@@ -29,7 +29,7 @@ describe("Queries", () => {
   });
 
   it("should render an element with the placeholder text Username here...", () => {
-    render(<Test />);
+    render(<Queries />);
 
     const element = screen.getByPlaceholderText("Username here...");
 
@@ -37,7 +37,7 @@ describe("Queries", () => {
   });
 
   it("should render an element with the text First btn", () => {
-    render(<Test />);
+    render(<Queries />);
 
     const element = screen.getByText("First btn");
 
@@ -45,7 +45,7 @@ describe("Queries", () => {
   });
 
   it("should render an element with the value of Akif", () => {
-    render(<Test />);
+    render(<Queries />);
 
     const element = screen.getByDisplayValue("Akif");
 
@@ -53,7 +53,7 @@ describe("Queries", () => {
   });
 
   it("should render an element with the altText of img", () => {
-    render(<Test />);
+    render(<Queries />);
 
     const element = screen.getByAltText("img");
 
@@ -61,7 +61,7 @@ describe("Queries", () => {
   });
 
   it("should render an element with the title of delete", () => {
-    render(<Test />);
+    render(<Queries />);
 
     const element = screen.getByTitle("delete");
 
@@ -71,7 +71,7 @@ describe("Queries", () => {
   // This is only recommended for cases where you cant match by role or text or it doesnt make sense (e.g. the text is dynamic).
 
   it("should render an element with the testId of custom-element", () => {
-    render(<Test />);
+    render(<Queries />);
 
     const element = screen.getByTestId("custom-element");
 
@@ -81,7 +81,7 @@ describe("Queries", () => {
   // Multiple Queries
 
   it("should render multiple button elements correctly", () => {
-    render(<Test />);
+    render(<Queries />);
 
     let elements = screen.getAllByRole("button");
 
@@ -91,7 +91,7 @@ describe("Queries", () => {
   // Text matching
 
   it("should render text element correctly", () => {
-    render(<Test />);
+    render(<Queries />);
 
     //First way of doing it is using regex :
 
@@ -109,7 +109,7 @@ describe("Queries", () => {
   // Queryby
 
   it("should check the exampleText prop", () => {
-    render(<Test exampleText="something" />);
+    render(<Queries exampleText="something" />);
 
     const element = screen.getByText("something");
 
@@ -123,7 +123,7 @@ describe("Queries", () => {
   // Find by
 
   it("should find the updated name using findBy", async () => {
-    render(<Test />);
+    render(<Queries />);
 
     const element = await screen.findByText(/memmedaga/i);
 
@@ -139,7 +139,7 @@ describe("Queries", () => {
   // Wait for
 
   it("should find the updated name using waitfor", async () => {
-    render(<Test />);
+    render(<Queries />);
 
     // First without using waitfor
 

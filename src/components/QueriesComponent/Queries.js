@@ -14,7 +14,7 @@ function Test({exampleText}) {
       <button>Second btn</button>
 
       <label htmlFor='username'>Username</label>
-      <input id='username' type="text" placeholder='Username here...' value="Akif" />
+      <input readOnly id='username' type="text" placeholder='Username here...' value="Akif" />
 
       <img alt="img" src="/incredibles-2.png" />
 

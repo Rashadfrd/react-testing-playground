@@ -55,17 +55,31 @@ describe("User Actions", () => {
 
     render(<UserActions />);
 
-    const animals = screen.getByRole('listbox');
+    const animals = screen.getByRole("listbox");
 
-    await userEvent.selectOptions(animals,['giraffe','tiger'])
+    await userEvent.selectOptions(animals, ["giraffe", "tiger"]);
 
-    expect(screen.getByRole('option', {name: 'Giraffe'}).selected).toBe(true)
-    expect(screen.getByRole('option', {name: 'Cat'}).selected).toBe(false)
-    expect(screen.getByRole('option', {name: 'Tiger'}).selected).toBe(true)
+    expect(screen.getByRole("option", { name: "Giraffe" }).selected).toBe(true);
+    expect(screen.getByRole("option", { name: "Cat" }).selected).toBe(false);
+    expect(screen.getByRole("option", { name: "Tiger" }).selected).toBe(true);
 
-    await userEvent.deselectOptions(animals,['giraffe'])
+    await userEvent.deselectOptions(animals, ["giraffe"]);
 
-    expect(screen.getByRole('option', {name: 'Giraffe'}).selected).toBe(false)
+    expect(screen.getByRole("option", { name: "Giraffe" }).selected).toBe(
+      false
+    );
+  });
 
+  //Type events
+  it("should render the element correctly", async () => {
+    let user = userEvent.setup()
+
+    render(<UserActions />)
+
+    const inputElement = screen.getByRole('textbox')
+
+    await user.type(inputElement,'unqava')
+
+    expect(inputElement).toHaveValue('unqava')
   });
 });

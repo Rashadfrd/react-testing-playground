@@ -82,4 +82,17 @@ describe("User Actions", () => {
 
     expect(inputElement).toHaveValue('unqava')
   });
+
+  //Click events
+  it("should render the element correctly", async () => {
+    let user = userEvent.setup()
+
+    render(<UserActions />)
+
+    const buttonElement = screen.getByRole('button',{name:'Click me'})
+
+    await user.click(buttonElement)
+
+    expect(true).toBe(true)
+  });
 });

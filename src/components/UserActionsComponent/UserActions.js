@@ -13,6 +13,10 @@ function UserActions() {
     window.navigator.clipboard.writeText("Some text copied here...");
   };
 
+  const clickHandler = () => {
+    console.log('clicked')
+  }
+
   return (
     <>
       <h3>{count}</h3>
@@ -25,6 +29,7 @@ function UserActions() {
         <option value="cat">Cat</option>
         <option value="giraffe">Giraffe</option>
       </select>
+      <button onClick={clickHandler}>Click me</button>
     </>
   );
 }

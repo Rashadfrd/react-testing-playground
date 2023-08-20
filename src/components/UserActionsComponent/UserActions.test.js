@@ -70,29 +70,39 @@ describe("User Actions", () => {
     );
   });
 
-  //Type events
+  // Type events
   it("should render the element correctly", async () => {
-    let user = userEvent.setup()
+    let user = userEvent.setup();
 
-    render(<UserActions />)
+    render(<UserActions />);
 
-    const inputElement = screen.getByRole('textbox')
+    const inputElement = screen.getByRole("textbox");
 
-    await user.type(inputElement,'unqava')
+    await user.type(inputElement, "unqava");
 
-    expect(inputElement).toHaveValue('unqava')
+    expect(inputElement).toHaveValue("unqava");
   });
 
-  //Click events
+  // Click events
   it("should render the element correctly", async () => {
-    let user = userEvent.setup()
+    let user = userEvent.setup();
 
-    render(<UserActions />)
+    render(<UserActions />);
 
-    const buttonElement = screen.getByRole('button',{name:'Click me'})
+    const buttonElement = screen.getByRole("button", { name: "Click me" });
 
-    await user.click(buttonElement)
+    await user.click(buttonElement);
 
-    expect(true).toBe(true)
+    expect(true).toBe(true);
+  });
+
+  // Custom Wrappers
+  it("should render the element correctly", () => {
+    render(<UserActions />,{
+      wrapper:({children}) => {
+        return(<div className="wrapper">{children}</div>)
+      }
+    })
+    screen.debug()
   });
 });
